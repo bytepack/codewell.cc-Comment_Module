@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url("../fonts/Rubik-Regular.woff2") format("woff2"),
+     url("../fonts/Rubik-Regular.woff") format("woff"),
+     url("../fonts/Rubik-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url("../fonts/Rubik-Bold.woff2") format("woff2"),
+    url("../fonts/Rubik-Bold.woff") format("woff"),
+    url("../fonts/Rubik-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --photo-width: 50px;
+    --main-font-size: 1.6rem;
+    --comment-gap: 2rem;
+    --comments-width: 90%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: var(--main-font-size);
+    color: #000000;
+}
+
+.page {
+    min-height: 100vh;
+    background-color: #FF9C85;
+    background-image: linear-gradient(180deg, #FFCB8F, #FF9C85);
+    display: flex;
+    align-items: center;
+}
+
+.comments {
+    background-color: #ffffff;
+    width: var(--comments-width);
+    max-width: 800px;
+    margin: 4rem auto;
+    border-radius: 10px;
+}
+
+.comments__children {
+    margin-left: var(--photo-width);
+}
+
+.comments__group {
+    position: relative;
+}
+
+.comments__group::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: calc(var(--photo-width));
+    width: 1px;
+    height: calc(100% - var(--photo-width));
+    background-color: #999999;
+}
+
+.comment {
+    margin: 4rem 2.5rem 4rem calc(var(--photo-width) / 2);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--comment-gap);
+}
+
+.comment__photo {
+    width: var(--photo-width);
+    margin-top: -10px;
+}
+
+.comment__info {
+    position: relative;
+}
+
+.comment__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.comment__name {
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+}
+
+.comment__time {
+    color: #777777;
+}
+
+.comment__body {
+    padding: 1.2rem 0 1.6rem;
+    line-height: 1.4;
+}
+
+.comment__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.4rem;
+}
+
+.comment__rating-number {
+    font-weight: bold;
+    margin: 0 0.25rem
+}
+
+.comment__reply, .comment__report, .comment__up, .comment__down{
+    cursor: pointer;
+}
+
+/* phone under 352px */
+@media only screen and (max-width: 22em) {
+    :root {
+        --photo-width: 40px;
+        --main-font-size: calc(3vw + 0.5rem);
+        --comments-width: 95%;
+        --comment-gap: 1rem;
+    }
+
+}
+
+/*Tablet and Phone L - 600px */
+@media only screen and (min-width: 37.5em) {
+    :root {
+        --photo-width: 60px;
+        --comment-gap: 3rem;
+    }
+
+    .comment {
+        margin: 4rem 4rem 4rem calc(var(--photo-width) / 2);
+    }
+}
+
+/* Laptop - 992px and above */
+@media only screen and (min-width: 62em) {
+    :root {
+        --comments-width: 60%;
+    }
+
+    .page {
+        background-image: conic-gradient(from 135deg, #FFCCEC, #FF9C85, #FFCB8F, #9594FF, #FFCCEC);
+    }
+
+}
+
+@media only screen and (orientation: landscape){
+    .comments{
+        margin: 1.5vh auto;
+    }
+}
